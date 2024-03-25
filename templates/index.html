@@ -5,7 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <title>KnowUnity PDF Downloader</title>
+    <meta name="description" content="PDF-Dokumente von Knowunity kostenlos herunterladen.">
     <link rel="icon" href="/icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             background: rgb(151, 167, 193);
@@ -23,11 +25,12 @@
         h1 {
             background-color: #4caf50;
             color: #fff;
-            padding: 20px;
+            display: grid;
+            width: fit-content;
+            padding: 30px 40px 30px 40px;
             margin-bottom: 50px;
-            text-align: center;
-            margin-left: 250px;
-            margin-right: 250px;
+            margin-left: auto;
+            margin-right: auto;
             border-radius: 20px;
         }
 
@@ -49,6 +52,13 @@
             border: 2px solid #4caf50;
             border-radius: 10px;
             text-align: center;
+        }
+
+
+        img {
+            height: 42px;
+            vertical-align: middle;
+            padding-bottom: 10px;
         }
 
         button {
@@ -97,6 +107,31 @@
         a:hover {
             text-decoration: underline;
         }
+
+        @media only screen and (max-width: 600px) {
+            body {
+                display: grid;
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+
+            }
+
+            h1 {
+                text-align: center;
+                padding: 10px 20px 10px 20px;
+            }
+
+            label {
+                margin-left: unset;
+            }
+
+
+
+            button {
+                margin-top: 15px;
+            }
+        }
     </style>
 </head>
 
@@ -104,13 +139,35 @@
     <h1>KnowUnity PDF Downloader</h1>
     <form action="/" method="post">
         <label for="url">URL :</label>
-        <input type="text" id="url" name="url" required>
+        <input type="text" id="url" name="url" required />
+        <img src="paste.png" onclick="pasteClipboard()" alt="Einfügen-Button" style="cursor: pointer;" />
         <button type="submit">Get PDF Link!</button>
     </form>
     {% if url %}
     <h2>PDF Link :</h2>
     <a href="{{ url }}" target="_blank">{{ url }}</a>
     {% endif %}
+
+    <script>
+        let isFirstClick = true;
+        document.getElementById('url').addEventListener('click', function () {
+            if (isFirstClick) {
+                this.select();
+                isFirstClick = false;
+            }
+        });
+
+        function pasteClipboard() {
+            navigator.clipboard.readText()
+                .then(text => {
+                    // Text aus der Zwischenablage in das Textfeld einfügen
+                    document.getElementById('url').value = text;
+                })
+                .catch(err => {
+                    console.error('Fehler beim Einfügen des Textes: ', err);
+                });
+        }
+    </script>
 </body>
 
 </html>
