@@ -1,5 +1,5 @@
 {
-  "buildCommand": [
+  "build": [
     {
       "src": "app.py",
       "use": "@vercel/python"
