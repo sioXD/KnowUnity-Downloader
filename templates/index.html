@@ -124,6 +124,11 @@
             button {
                 margin-top: 15px;
             }
+
+            a {
+                margin-left: 10px;
+                margin-right: 10px;
+            }
         }
     </style>
 </head>
@@ -160,6 +165,10 @@
                     console.error('Fehler beim Einfügen des Textes: ', err);
                 });
         }
+
+        document.getElementById('meinFormular').addEventListener('submit', function (event) {
+            event.preventDefault();
+        });
     </script>
 </body>
 
