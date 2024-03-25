@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title>KnowUnity PDF Downloader</title>
     <meta name="description" content="PDF-Dokumente von Knowunity kostenlos herunterladen.">
-    <link rel="icon" href="/icon.png">
+    <link rel="icon" href="/static/images//icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
@@ -126,8 +126,6 @@
                 margin-left: unset;
             }
 
-
-
             button {
                 margin-top: 15px;
             }
@@ -140,7 +138,7 @@
     <form action="/" method="post">
         <label for="url">URL :</label>
         <input type="text" id="url" name="url" required />
-        <img src="paste.png" onclick="pasteClipboard()" alt="Einfügen-Button" style="cursor: pointer;" />
+        <img src="/static/images/paste.png" onclick="pasteClipboard()" alt="Einfügen-Button" style="cursor: pointer;" />
         <button type="submit">Get PDF Link!</button>
     </form>
     {% if url %}
