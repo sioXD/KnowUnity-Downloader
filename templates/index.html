@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>KnowUnity PDF Downloader</title>
     <meta name="description" content="PDF-Dokumente von Knowunity kostenlos herunterladen.">
-    <link rel="icon" href="/static/images//icon.png">
+    <link rel="icon" href="/static/images/icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta max-snippet=" ">
     <style>
@@ -21,13 +21,22 @@
         h1 {
             background-color: #4caf50;
             color: #fff;
-            display: grid;
-            width: fit-content;
-            padding: 30px 40px 30px 40px;
-            margin-bottom: 50px;
+            padding: 30px 40px 30px 0;
+            border-radius: 0 20px 20px 0;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
             margin-left: auto;
             margin-right: auto;
-            border-radius: 20px;
+            width: fit-content;
+            margin-bottom: 50px;
+        }
+
+        .logo {
+            height: 98px;
+            border-radius: 20px 0 0 20px;
         }
 
         form {
@@ -50,8 +59,7 @@
             text-align: center;
         }
 
-
-        img {
+        img.paste {
             height: 42px;
             vertical-align: middle;
             padding-bottom: 10px;
@@ -85,7 +93,6 @@
             margin-right: auto;
         }
 
-
         a {
             color: #1d1d1d;
             text-decoration: none;
@@ -104,7 +111,7 @@
             text-decoration: underline;
         }
 
-        @media (max-width: 600px) {
+        @media only screen and (max-width: 600px) {
             body {
                 display: grid;
                 width: fit-content;
@@ -114,27 +121,46 @@
 
             h1 {
                 text-align: center;
-                padding: 10px 20px 10px 20px;
+                padding: 10px 20px 10px 0;
+            }
+
+            .logo {
+                height: 58px;
             }
 
             button {
                 margin-top: 15px;
             }
+        }
 
+        @media only screen and (max-width: 450px) {
+            .logo {
+                height: 96px;
+            }
+        }
+
+        @media only screen and (max-width: 310px) {
+            .logo {
+                height: 134px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <h1>KnowUnity PDF Downloader</h1>
+    <div class="header-container">
+        <img src="/static/images/icon.png" alt="Logo" class="logo">
+        <h1>KnowUnity PDF Downloader</h1>
+    </div>
     <form action="/" method="post">
         <label for="url">URL :</label>
         <input type="text" id="url" name="url" required />
-        <img src="/static/images/paste.png" onclick="pasteClipboard()" alt="Einfügen-Button" style="cursor: pointer;" />
-        <button type="submit">Get PDF Link!</button>
+        <img class="paste" src="/static/images/paste.png" onclick="pasteClipboard()" alt="Einfügen-Button"
+            style="cursor: pointer;" />
+        <button type="submit">Get PDF!</button>
     </form>
     {% if url %}
-    <h2>PDF Link :</h2>
+    <h2>PDF :</h2>
     <a href="{{ url }}" target="_blank">Download-PDF</a>
     {% endif %}
 
