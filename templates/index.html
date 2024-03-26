@@ -166,9 +166,105 @@
                 });
         }
 
+        window.addEventListener('resize', function () {
+            var breite = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            if (breite <= 600) {
+                // Für das body-Element
+                document.body.style.display = 'grid';
+                document.body.style.width = 'fit-content';
+                document.body.style.marginLeft = 'auto';
+                document.body.style.marginRight = 'auto';
+
+                // Für das h1-Element
+                var h1Elements = document.getElementsByTagName('h1');
+                for (var i = 0; i < h1Elements.length; i++) {
+                    h1Elements[i].style.textAlign = 'center';
+                    h1Elements[i].style.padding = '10px 20px 10px 20px';
+                }
+
+                // Für label-Elemente
+                var labelElements = document.getElementsByTagName('label');
+                for (var i = 0; i < labelElements.length; i++) {
+                    labelElements[i].style.marginLeft = 'unset';
+                }
+
+                // Für button-Elemente
+                var buttonElements = document.getElementsByTagName('button');
+                for (var i = 0; i < buttonElements.length; i++) {
+                    buttonElements[i].style.marginTop = '15px';
+                }
+
+                // Für a-Elemente (Links)
+                var aElements = document.getElementsByTagName('a');
+                for (var i = 0; i < aElements.length; i++) {
+                    aElements[i].style.marginLeft = '10px';
+                    aElements[i].style.marginRight = '10px';
+                }
+            }
+        });
+
+        // Nach dem Absenden des Formulars 
         document.getElementById('meinFormular').addEventListener('submit', function (event) {
             event.preventDefault();
+            // Überprüfen Sie die Breite und wenden Sie @media-Regeln an
+            var breite = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            if (breite <= 600) {
+                // Für das body-Element
+                document.body.style.display = 'grid';
+                document.body.style.width = 'fit-content';
+                document.body.style.marginLeft = 'auto';
+                document.body.style.marginRight = 'auto';
+
+                // Für das h1-Element
+                var h1Elements = document.getElementsByTagName('h1');
+                for (var i = 0; i < h1Elements.length; i++) {
+                    h1Elements[i].style.textAlign = 'center';
+                    h1Elements[i].style.padding = '10px 20px 10px 20px';
+                }
+
+                // Für label-Elemente
+                var labelElements = document.getElementsByTagName('label');
+                for (var i = 0; i < labelElements.length; i++) {
+                    labelElements[i].style.marginLeft = 'unset';
+                }
+
+                // Für button-Elemente
+                var buttonElements = document.getElementsByTagName('button');
+                for (var i = 0; i < buttonElements.length; i++) {
+                    buttonElements[i].style.marginTop = '15px';
+                }
+
+                // Für a-Elemente (Links)
+                var aElements = document.getElementsByTagName('a');
+                for (var i = 0; i < aElements.length; i++) {
+                    aElements[i].style.marginLeft = '10px';
+                    aElements[i].style.marginRight = '10px';
+                }
+            }
+            document.getElementById('meinFormular').addEventListener('submit', function (event) {
+                event.preventDefault(); // Verhindert das Neuladen der Seite beim Absenden des Formulars
+
+                // Sammeln der Formulardaten
+                var formData = new FormData(event.target);
+
+                // Validierung der Formulardaten (optional)
+                // ...
+
+                // Senden der Formulardaten an den Server
+                fetch('/meineFormularVerarbeitung', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data); // Verarbeitung der Antwort vom Server
+                    })
+                    .catch(error => {
+                        console.error('Ein Fehler ist aufgetreten:', error);
+                    });
+            });
         });
+
     </script>
 </body>
 
