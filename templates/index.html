@@ -94,11 +94,10 @@
             display: grid;
             background-color: rgba(240, 248, 255, 0.247);
             border-radius: 10px;
-            padding: 6px;
+            padding: 7.5px;
             width: fit-content;
             margin-left: auto;
             margin-right: auto;
-            font-size: 2em;
         }
 
         a:hover {
@@ -122,14 +121,6 @@
                 margin-top: 15px;
             }
 
-            a {
-                font-size: 1em;
-            }
-
-            link {
-                width: fit-content;
-                margin: 15px;
-            }
         }
     </style>
 </head>
@@ -144,7 +135,7 @@
     </form>
     {% if url %}
     <h2>PDF Link :</h2>
-    <a href="{{ url }}" target="_blank">{{ url }}</a>
+    <a href="{{ url }}" target="_blank">Download-PDF</a>
     {% endif %}
 
     <script>
