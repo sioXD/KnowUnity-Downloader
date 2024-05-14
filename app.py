@@ -26,5 +26,18 @@ def get_content_url(know_id):
         return json_data['documents'][0]['contentUrl']
     return None
 
+
+from datetime import datetime
+
+# ... Ihr vorhandener Code ...
+
+@app.route('/', methods=['GET', 'POST'])
+def home():
+    if request.method == 'POST':
+        # ... Ihr Code zur Verarbeitung der URL und Erstellung der PDF ...
+        timestamp = datetime.now().strftime('%H:%M:%S')
+        return render_template('index.html', timestamp=timestamp)
+    return render_template('index.html')
+
 if __name__ == '__main__':
     app.run()
