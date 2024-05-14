@@ -36,7 +36,7 @@ def home():
     if request.method == 'POST':
         # ... Ihr Code zur Verarbeitung der URL und Erstellung der PDF ...
         timestamp = datetime.now().strftime('%H:%M:%S')
-        return render_template('index.html', timestamp=timestamp)
+        return render_template('index.html',url= response, timestamp=timestamp)
     return render_template('index.html')
 
 if __name__ == '__main__':
