@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import requests
 import re
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -27,16 +28,13 @@ def get_content_url(know_id):
     return None
 
 
-from datetime import datetime
 
-# ... Ihr vorhandener Code ...
 
-@app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
         # ... Ihr Code zur Verarbeitung der URL und Erstellung der PDF ...
         timestamp = datetime.now().strftime('%H:%M:%S')
-        return render_template('index.html',url= response, timestamp=timestamp)
+        return render_template('index.html', url= 'contentUrl',timestamp=timestamp)
     return render_template('index.html')
 
 if __name__ == '__main__':
