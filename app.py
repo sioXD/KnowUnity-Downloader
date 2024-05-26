@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import requests
 import re
-from datetime import datetime
+import datetime
 
 app = Flask(__name__)
 
@@ -13,7 +13,8 @@ def index():
         know_id = extract_know_id(input_url)
         if know_id:
             url = get_content_url(know_id)
-    return render_template('index.html', url=url)
+            timestamp = datetime.now().strftime('%H:%M:%S')
+    return render_template('index.html', url=url, timestamp=timestamp)
 
 def extract_know_id(input_url):
     match = re.search(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", input_url)
@@ -28,14 +29,15 @@ def get_content_url(know_id):
     return None
 
 
-
-
-def home():
-    if request.method == 'POST':
-        # ... Ihr Code zur Verarbeitung der URL und Erstellung der PDF ...
-        timestamp = datetime.now().strftime('%H:%M:%S')
-        return render_template('index.html', url= 'contentUrl',timestamp=timestamp)
-    return render_template('index.html')
+#
+#
+#def home():
+#    if request.method == 'POST':
+#        # ... Ihr Code zur Verarbeitung der URL und Erstellung d#er PDF ...
+  #      timestamp = datetime.now().strftime('%H:%M:%S')
+   #     return render_template('index.html', url= 'contentUrl',timestamp=timestamp)
+    #else:
+     #   return render_template('index.html')
 
 if __name__ == '__main__':
     app.run()
