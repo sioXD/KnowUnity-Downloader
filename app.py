@@ -14,7 +14,7 @@ def index():
         know_id = extract_know_id(input_url)
         if know_id:
             url = get_content_url(know_id)
-            timestamp = datetime.datetime.now().strftime('%H:%M:%S')
+            timestamp = datetime.datetime.now().strftime('%M:%S')
     return render_template('index.html', url=url, timestamp=timestamp)
 
 def extract_know_id(input_url):
@@ -29,16 +29,6 @@ def get_content_url(know_id):
         return json_data['documents'][0]['contentUrl']
     return None
 
-
-#
-#
-#def home():
-#    if request.method == 'POST':
-#        # ... Ihr Code zur Verarbeitung der URL und Erstellung d#er PDF ...
-  #      timestamp = datetime.now().strftime('%H:%M:%S')
-   #     return render_template('index.html', url= 'contentUrl',timestamp=timestamp)
-    #else:
-     #   return render_template('index.html')
 
 if __name__ == '__main__':
     app.run()
