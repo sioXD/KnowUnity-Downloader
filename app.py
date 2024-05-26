@@ -14,7 +14,7 @@ def index():
         know_id = extract_know_id(input_url)
         if know_id:
             url = get_content_url(know_id)
-            timestamp = datetime.now().strftime('%H:%M:%S')
+            timestamp = datetime.datetime.now().strftime('%H:%M:%S')
     return render_template('index.html', url=url, timestamp=timestamp)
 
 def extract_know_id(input_url):
