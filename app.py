@@ -8,6 +8,7 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     url = None
+    timestamp = None
     if request.method == 'POST':
         input_url = request.form['url']
         know_id = extract_know_id(input_url)
