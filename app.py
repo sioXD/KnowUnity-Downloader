@@ -1,11 +1,20 @@
 from flask import Flask, render_template, request, jsonify
 import requests
 import re
-import datetime
+
 
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
+def index():
+    url = None
+    if request.method == 'POST':
+        input_url = request.form['url']
+        know_id = extract_know_id(input_url)
+        if know_id:
+            url = get_content_url(know_id)
+    return render_template('index.html', url=url)
+
 def extract_know_id(input_url):
     match = re.search(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", input_url)
     return match.group(0) if match else None
